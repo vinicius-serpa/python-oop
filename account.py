@@ -14,7 +14,7 @@ class Account:
         self.__balance += value
 
     def cash(self, value):
-        if self.can_cash(value):
+        if self.__can_cash(value):
             self.__balance -= value
         else:
             print("Limit exceeded")
@@ -38,6 +38,16 @@ class Account:
     @limit.setter
     def limit(self, value):
         self.__limit = value
+
+    # Static Methods
+
+    @staticmethod
+    def bank_code():
+        return "001"
+
+    @staticmethod
+    def bank_codes():
+        return {"BB": "001", "Bradesco": "237", "Caixa": "104"}
 
     # Private Methods
 
