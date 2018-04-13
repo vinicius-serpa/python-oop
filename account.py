@@ -14,7 +14,10 @@ class Account:
         self.__balance += value
 
     def cash(self, value):
-        self.__balance -= value
+        if self.can_cash(value):
+            self.__balance -= value
+        else:
+            print("Limit exceeded")
 
     def transfer(self, value, account):
         self.cash(value)
@@ -35,3 +38,12 @@ class Account:
     @limit.setter
     def limit(self, value):
         self.__limit = value
+
+    # Private Methods
+
+    def __can_cash(self, value):
+        total_value = self.__balance + self.__limit
+        if value <= total_value:
+            return True
+        else:
+            return False
